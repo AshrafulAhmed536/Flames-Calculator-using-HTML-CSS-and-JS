@@ -1,0 +1,125 @@
+<html>
+<head>
+<title>Calc</title>
+<style>
+.abc{
+height:30px;
+width:35px;
+font-size:16;
+border-color:#666666;
+background-color:#999999;
+border-width:4px;
+color:white;
+}
+.efg{
+height:30px;
+width:35px;
+border-color:#CC0000;
+color:white;
+background-color:#FF0000;
+border-width:4px;
+font-size:10;
+}
+.container{
+height:400px;
+width:250px;
+border-style:outset;
+border-width:8px;
+border-color:#6633CC;
+background-color:#663300;
+}
+.container1{
+height:240px;
+width:215px;
+border-width:6px;
+border-style:groove;
+border-color:#99FF00;
+background-color:#003333;
+}
+.container2{
+height:30px;
+width:230px;
+font-size:20;
+border-width:6px;
+border-style:groove;
+border-color:#99FF00;
+color:orange;
+background-color:indigo;
+}
+</style>
+</head>
+<body><center>
+<div class="container">
+<div><font color=white face=forte><u>Ashraf's Calculator</font></u></div><br>
+<div class="container2" id="d1"></div><br>
+<div class="container1">
+<br>
+<div>
+<button class="abc" onclick="myprint(1)" id="b1">1</button>  
+<button class="abc" onclick="myprint(2)" id="b2">2</button>  
+<button class="abc" onclick="myprint(3)" id="b3" >3</button>  
+<button class="efg" onclick="del()" id="f1" >DEL</button>  
+<button class="efg" onclick="allclear()" id="f2" >AC</button><br><br>
+<button class="abc" onclick="myprint(4)" id="b4" >4</button>  
+<button class="abc" onclick="myprint(5)" id="b5" >5</button>  
+<button class="abc" onclick="myprint(6)" id="b6" >6</button>  
+<button class="abc" onclick="myprint('*')" id="c2" >x</button>  
+<button class="abc" onclick="myprint('/')" id="c1" >/</button><br><br>
+<button class="abc" onclick="myprint(7)" id="b7" >7</button>  
+<button class="abc" onclick="myprint(8)" id="b8" >8</button>  
+<button class="abc" onclick="myprint(9)" id="b9" >9</button>   
+<button class="abc" onclick="myprint('+')" id="c3" >+</button>  
+<button class="abc" onclick="myprint('-')" id="c1" >-</button><br><br>
+<button class="abc" onclick="myprint(0)" id="b0" >0</button>  
+<button class="abc" onclick="myprint('.')" id="b." >.</button>  
+<button class="abc" onclick="myresult()" id="r" >=</button><br><br>    
+</div></div>
+</div>
+</center>
+<script>
+
+var x=document.getElementById("d1");
+function myprint(n)
+{
+if(x.innerHTML.length>19)
+{
+var l=x.innerHTML.substr(0,20);
+x.innerHTML=l;
+}
+else
+{
+var z=document.createTextNode(n);
+x.appendChild(z);
+}
+}
+function myresult()
+{
+if((/[\.+-/*][\./*]/.test(x.innerHTML))||(/[/*][+-]/.test(x.innerHTML))||(/[+][+]/.test(x.innerHTML))||(/[-][-]/.test(x.innerHTML))||(/^[/*]/.test(x.innerHTML))||(/[/*+-]$/.test(x.innerHTML))||(x.innerHTML==" ")||(/[\/][0]/.test(x.innerHTML))==true)
+{
+x.innerHTML="Syntax ERROR";
+setTimeout(function cl(){x.innerHTML=" ";},500);
+}
+else
+{
+var t=document.getElementById("d1").innerHTML;
+var a=eval(t);
+var z=document.createTextNode(a);
+x.innerHTML=" ";
+x.appendChild(z);
+}
+}
+function del()
+{
+var t=document.getElementById("d1").innerHTML;
+var y=t.substr(0,t.length-1);
+x.innerHTML=y;
+}
+function allclear()
+{
+x.innerHTML=" ";
+}
+
+</script>
+</body>
+</html>
+
