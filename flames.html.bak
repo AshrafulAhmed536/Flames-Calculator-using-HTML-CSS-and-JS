@@ -1,0 +1,136 @@
+<html>
+<head>
+<title>Flames</title>
+<style>
+body
+{
+background-color:black;
+background-repeat:no-repeat;
+background-size:100% 100%;
+}
+input
+{
+height:auto;
+width:130px;
+box-shadow:0 0 3px 2px white;
+border:0px;
+background-color:black;
+color:white;
+font-weight:bold;
+padding:3px;
+}
+h1
+{
+text-shadow:0 0 3px 3px red,0 0 7px 7px yellow;
+}
+#result
+{
+font-family:Monotype Corsiva;
+font-weight:bolder;
+}
+.buttons
+{
+border:3px outset;
+box-shadow:none;
+height:auto;
+width:70px;
+padding:3px;
+}
+</style>
+</head>
+<body>
+<center>
+<h1 id="heading"><font color=red>&#10084</font> FLAMES <font color=red>&#10084</font></h1>
+<form action="#">
+<font style="text-shadow:0 0 2px 2px black;"color=red face="Monotype Corsiva" size=5><b>Your Name: <input id="boyname"type="text"></input>&nbsp
+ Crush's Name: <input id="girlname"type="text"></input></b></font><br><br>
+<input class="buttons" id="startflames"type="button" value="Check" onclick="startcalculating(boyname.value,girlname.value)"></input> 
+&nbsp<input class="buttons" type="reset" onclick="vanish()"></input>
+</form>
+<br>
+<h1><div id="result"></div><h1>
+</center>
+<script>
+function startcalculating(name1,name2)
+{
+	var result=document.getElementById("result");
+	var flames=['f','l','a','m','e','s'];
+	var i,j,k=-1,l=0,count=0;
+	var relation;
+	name1=name1.toLowerCase();
+	name2=name2.toLowerCase();
+	var array1=name1.split("");
+	var array2=name2.split("");
+	var big=array1.length>array2.length?array1:array2;
+	var small=array1.length<array2.length?array1:array2;
+	for(i=0;i<big.length;i++)
+	{
+		for(j=0;j<small.length;j++)
+		{
+			if(big[i]==small[j])
+			{
+			big[i]=small[j]='\0';
+			break;
+			}
+		}
+	
+	}
+	for(i=0;i<big.length;i++)
+	if(big[i]!='\0')
+	count++;
+		for(j=0;j<small.length;j++)
+	if(small[j]!='\0')
+	count++;
+	count=12;
+	for(i=0;i<flames.length-1;i++)
+	{
+		for(j=1;j<=count;j++)
+		{
+			l=0;
+			k++;
+			if(k>=flames.length)
+			k=0;
+			while(flames[k]=='\0')
+				{
+			k++;
+			if(k>=flames.length)
+			k=0;
+		
+			}
+		}
+		flames[k]='\0';
+	}
+for(i=0;i<flames.length;i++)
+if(flames[i]!='\0')
+		relation=flames[i];
+switch(relation)
+	{
+		case 'f':result.innerHTML="FRIENDS";
+		document.body.style.backgroundImage='url("friendship.jpg")';
+		break;
+		case 'l':result.innerHTML="LOVERS";
+		document.body.style.backgroundImage='url("lovers.jpg")';
+		break;
+		case 'a':result.innerHTML="AFFECTION";
+		document.body.style.backgroundImage='url("affection.jpg")';
+		break;
+		case 'm':result.innerHTML="MARRIAGE";
+		document.body.style.backgroundImage='url("marriage.jpg")';
+		break;
+		case 'e':result.innerHTML="ENEMY";
+		document.body.style.backgroundImage='url("enemy.jpg")';
+		break;
+		case 's':result.innerHTML="SIBLINGS";
+		document.body.style.backgroundImage='url("siblings.jpg")';
+		break;
+	}
+}
+function vanish()
+{
+document.body.style.backgroundImage='none';
+document.getElementById("result").innerHTML="";
+
+}
+</script>
+</body>
+</html>
